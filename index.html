@@ -180,6 +180,19 @@
 
 <section class="page" id="page-settings">
  <div class="page-title"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Settings</h1><p class="muted">Choose your programme and adjust your study space.</p></div></div>
+ <div class="panel" id="cloudSyncPanel">
+  <div class="section-head" style="margin-top:0"><div><h2>Cloud sync across devices</h2><p class="muted">Use the same StudyHub account on your phone, tablet and computer.</p></div><span class="pill" id="cloudSyncBadge">Not connected</span></div>
+  <div class="notice">Cloud sync is optional. Your browser keeps a local copy and continues working offline. To enable cross-device sync, create a free Supabase project and enter its Project URL and publishable/anon key below. Never enter a service_role or secret key here.</div>
+  <div class="form-grid">
+   <label class="wide">Supabase Project URL<input class="input" id="cloudProjectUrl" type="url" placeholder="https://your-project.supabase.co" autocomplete="url"></label>
+   <label class="wide">Supabase publishable key / anon public key<input class="input" id="cloudAnonKey" type="text" placeholder="sb_publishable_… or legacy anon key" autocomplete="off" spellcheck="false"></label>
+   <label>Email<input class="input" id="cloudEmail" type="email" placeholder="you@example.com" autocomplete="email"></label>
+   <label>Password<input class="input" id="cloudPassword" type="password" placeholder="At least 8 characters" autocomplete="current-password"></label>
+  </div>
+  <div class="hero-actions"><button class="btn" id="cloudSaveConfig">Save cloud settings</button><button class="btn secondary" id="cloudSignUp">Create account</button><button class="btn secondary" id="cloudSignIn">Sign in</button><button class="btn secondary" id="cloudSyncNow" disabled>Sync now</button><button class="btn danger" id="cloudSignOut" disabled>Sign out</button></div>
+  <p class="muted" id="cloudSyncStatus" role="status" aria-live="polite">Not connected. Local-only mode is active.</p>
+  <p class="muted small">Sync covers your StudyHub state: planner, notes, chapters, flashcards, questions, results, sessions, settings and private reflections. Locally selected PDF files and diagram canvas images are not uploaded. Use the same account on every device. If you sign in on a device that already has local data, you will be asked whether to download cloud data or upload that device's data.</p>
+ </div>
  <div class="panel settings"><div class="setting-row"><div><b>Academic programme</b><p class="muted">Switch between SSLC, Plus One and Plus Two.</p></div><button class="btn secondary" id="settingsProgramme">Change</button></div><div class="setting-row"><div><b>Appearance</b><p class="muted">Light or dark theme.</p></div><button class="btn secondary" id="settingsTheme">Toggle</button></div><div class="setting-row"><div><b>Daily goal</b><p class="muted">Edit weekday and Sunday targets in the planner.</p></div><button class="btn secondary" data-page="planner">Planner</button></div><div class="setting-row"><div><b>Delete local data</b><p class="muted">Permanently erase all StudyHub records in this browser.</p></div><button class="btn danger" id="deleteData">Delete all data</button></div></div>
  <div class="notice"><b>Privacy & backup:</b> Your notes, tasks and learning records stay in this browser. This package does not create accounts or upload personal study data. Browser storage is not a cloud backup. Clearing browser data or losing your device can erase records.</div>
 </section>
@@ -189,5 +202,6 @@
 
 <dialog id="programmeDialog" class="dialog"><form method="dialog" id="programmeForm"><div class="dialog-head"><div><div class="eyebrow">WELCOME TO STUDYHUB</div><h2>Choose your programme</h2><p class="muted">You can change it later. No account needed.</p></div><button class="icon-btn" value="cancel">✕</button></div><label class="programme-option"><input type="radio" name="programme" value="plusone"><span>📘</span><span><b>Kerala DHSE Plus One</b><small>First priority workspace</small></span></label><label class="programme-option"><input type="radio" name="programme" value="sslc"><span>🎓</span><span><b>Kerala SSLC · Class 10</b><small>Separate subject workspace</small></span></label><label class="programme-option"><input type="radio" name="programme" value="plustwo"><span>📗</span><span><b>Kerala DHSE Plus Two</b><small>Stream-specific subjects can be added</small></span></label><button class="btn full" id="saveProgramme" value="default">Continue →</button></form></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script src="js/app.js" defer></script>
 </body></html>
