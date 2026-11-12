@@ -1,0 +1,9 @@
+{
+  "name": "studyhub-2027",
+  "version": "1.0.0-baseline",
+  "private": true,
+  "description": "StudyHub 2027 static learning PWA baseline",
+  "scripts": {
+    "check": "node --check js/app.js && node tests/smoke-check.js"
+  }
+}
