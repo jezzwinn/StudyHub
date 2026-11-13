@@ -1,4 +1,4 @@
-const CACHE="studyhub-v12-separate-login-adaptive-planner";
+const CACHE="studyhub-v14-smart-exam-planner";
 const CORE=["./","./index.html","./login.html","./js/auth.js","./css/styles.css","./js/app.js","./manifest.webmanifest","./assets/icons/studyhub-icon.svg"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));

@@ -19,7 +19,7 @@
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-profile"><span class="profile-mark">✦</span><div><b>StudyHub</b><small>Learn · Share · Grow</small></div></div>
   <button class="nav active" data-page="dashboard">⌂ <span>Overview</span></button>
-  <details class="nav-group" open><summary>LEARNING</summary>
+  <details class="nav-group"><summary>LEARN</summary>
     <button class="nav" data-page="subjects">▦ <span>Subject centres</span></button>
     <button class="nav" data-page="resources">↗ <span>Study library</span></button>
     <button class="nav" data-page="papers">▤ <span>PYQ & question papers</span></button>
@@ -27,7 +27,7 @@
     <button class="nav" data-page="diagram">✎ <span>Diagram lab</span></button>
     <button class="nav" data-page="pdfs">▤ <span>PDF reader</span></button>
   </details>
-  <details class="nav-group" open><summary>PLAN & IMPROVE</summary>
+  <details class="nav-group"><summary>PLAN & PRACTISE</summary>
     <button class="nav" data-page="planner">▤ <span>Smart planner</span></button>
     <button class="nav" data-page="focus">◷ <span>Focus room</span></button>
     <button class="nav" data-page="revision">✧ <span>Revision centre</span></button>
@@ -36,7 +36,7 @@
     <button class="nav" data-page="answerlab">✍ <span>Answer Lab</span></button>
     <button class="nav" data-page="voice">🔊 <span>Voice study</span></button>
   </details>
-  <details class="nav-group"><summary>TRACK PROGRESS</summary>
+  <details class="nav-group"><summary>YOUR PROGRESS</summary>
     <button class="nav" data-page="exams">♜ <span>Exam & marks</span></button>
     <button class="nav" data-page="analytics">▥ <span>Analytics</span></button>
     <button class="nav" data-page="reports">▧ <span>Progress reports</span></button>
@@ -46,7 +46,7 @@
     <button class="nav" data-page="values">☘ <span>Values & kindness</span></button>
     <button class="nav" data-page="ai">✺ <span>Study support</span></button>
   </details>
-  <details class="nav-group"><summary>ACCOUNT & DATA</summary>
+  <details class="nav-group"><summary>ACCOUNT & SETTINGS</summary>
     <button class="nav" data-page="account">♙ <span>Account & security</span></button>
     <button class="nav" data-page="backup">⛨ <span>Backup vault</span></button>
     <button class="nav" data-page="settings">⚙ <span>Preferences</span></button>
@@ -56,6 +56,15 @@
 <main id="main">
 <section class="page active" id="page-dashboard">
   <div class="hero"><div class="eyebrow">MONDAY MOTIVATION · EVERY DAY</div><h1>Make today count. ✨</h1><p>Small steps, steady effort. Your learning journey starts with one focused session.</p><div class="hero-actions"><button class="btn light" data-page="planner">Plan today →</button><button class="btn ghost-light" id="startNow">Start a 25-minute session</button></div></div>
+  <section class="start-guide panel" aria-labelledby="startGuideTitle">
+    <div class="start-guide-head"><div><div class="eyebrow">NEW HERE? START WITH THESE THREE STEPS</div><h2 id="startGuideTitle">Your next step is simple.</h2><p class="muted">You do not need to explore everything today. Follow this path and StudyHub will help you build momentum.</p></div><span class="start-guide-mark">✦</span></div>
+    <div class="start-steps">
+      <button class="start-step" data-page="subjects"><span class="start-step-number">01</span><span class="start-step-icon">📚</span><span class="start-step-copy"><b>Choose what to learn</b><small>Open your subjects and pick a chapter.</small></span><span class="start-step-arrow">→</span></button>
+      <button class="start-step" data-page="planner"><span class="start-step-number">02</span><span class="start-step-icon">🗓️</span><span class="start-step-copy"><b>Make a realistic plan</b><small>Use your smart timetable and daily missions.</small></span><span class="start-step-arrow">→</span></button>
+      <button class="start-step" data-page="practice"><span class="start-step-number">03</span><span class="start-step-icon">✍️</span><span class="start-step-copy"><b>Test what you remember</b><small>Practise questions and revise weak topics.</small></span><span class="start-step-arrow">→</span></button>
+    </div>
+    <p class="start-guide-foot">Everything else is available in the section menu. Take it one step at a time.</p>
+  </section>
   <div class="section-head"><div><h2>Your progress</h2><p id="todayDate" class="muted"></p></div><span class="pill" id="goalPill">Goal: 4 hours</span></div>
   <div class="stats">
     <article class="stat"><span>⏱</span><strong id="todayMinutes">0 min</strong><small>Focused today</small></article>
@@ -73,12 +82,13 @@
  <div class="page-title"><div><div class="eyebrow">YOUR PROGRAMME</div><h1>Subject centres</h1><p class="muted">Organise chapters, track learning and create your own syllabus checklist.</p></div></div>
  <div class="notice"><b>Academic content status:</b> The subject structure is a starter workspace. Official 2026–27 chapter lists and examination details must be verified against current SCERT/DHSE materials. Add your confirmed chapters below; no chapters or mark schemes are invented.</div>
  <div id="subjectGrid" class="subject-grid"></div><div id="subjectDetail" class="panel hidden"></div>
- <form id="chapterForm" class="panel form-grid"><h3 class="wide">＋ Add a confirmed chapter/topic</h3><label>Subject<select id="chapterSubject" class="input"></select></label><label>Chapter / topic<input id="chapterName" class="input" required maxlength="120" placeholder="Enter exact textbook title"></label><label class="wide">Reference / page (optional)<input id="chapterRef" class="input" placeholder="Textbook, chapter number or page"></label><div class="wide"><button class="btn">Add to my checklist</button></div></form>
+ <form id="chapterForm" class="panel form-grid"><h3 class="wide">＋ Add a confirmed chapter/topic</h3><label>Subject<select id="chapterSubject" class="input"></select></label><label>Chapter / topic<input id="chapterName" class="input" required maxlength="120" placeholder="Enter exact textbook title"></label><label>Difficulty<select id="chapterDifficulty" class="input"><option value="2">Medium</option><option value="3">Hard</option><option value="1">Easy</option></select></label><label>Confidence<select id="chapterConfidence" class="input"><option value="2">Average</option><option value="1">Low / needs help</option><option value="3">Strong</option></select></label><label class="wide">Reference / page (optional)<input id="chapterRef" class="input" placeholder="Textbook, chapter number or page"></label><div class="wide"><button class="btn">Add to my checklist</button></div></form>
 </section>
 
 <section class="page" id="page-planner">
  <div class="page-title"><div><div class="eyebrow">PLAN WITH PURPOSE</div><h1>Smart planner</h1><p class="muted">Make a realistic plan, then adjust it as life happens.</p></div></div>
  <div class="notice"><b>Exam-ready default routine:</b> built around a long school day (7:30 AM–6:00 PM), protected sleep, short breaks, active recall and spaced revision. It rotates every Plus One subject. Adjust school/commute timings to your real routine.</div>
+ <div class="panel" id="autoPlannerSetup"><div class="section-head"><div><h2>Automatic routine setup</h2><p class="muted">Set your real-life boundaries once. StudyHub will build separate school-day and holiday schedules around them.</p></div><span class="pill">Balanced mode</span></div><div class="form-grid"><label>School starts<input class="input" id="profileSchoolStart" type="time" value="08:00"></label><label>School ends / reach home<input class="input" id="profileSchoolEnd" type="time" value="16:30"></label><label>Wake-up time<input class="input" id="profileWake" type="time" value="06:00"></label><label>Bedtime<input class="input" id="profileSleep" type="time" value="22:00"></label><label>Protected play / recreation starts<input class="input" id="profilePlayStart" type="time" value="17:00"></label><label>Recreation duration (minutes)<input class="input" id="profilePlayMinutes" type="number" min="30" max="180" step="15" value="60"></label><label>School-day study target (hours)<input class="input" id="profileWeekdayHours" type="number" min="0.5" max="6" step="0.5" value="2"></label><label>Holiday study target (hours)<input class="input" id="profileHolidayHours" type="number" min="1" max="10" step="0.5" value="5"></label><label class="wide">School days<select class="input" id="profileSchoolDays"><option value="1,2,3,4,5,6">Monday–Saturday</option><option value="1,2,3,4,5">Monday–Friday</option><option value="0,1,2,3,4,5,6">Every day (custom school week)</option></select></label></div><div class="row-actions"><button class="btn" type="button" id="savePlannerProfile">Save routine preferences</button><button class="btn secondary" type="button" id="generateSmartPlan">Generate my automatic full-syllabus plan</button><span id="autoPlannerStatus" class="muted small" aria-live="polite">Your sleep and recreation are protected.</span></div><div class="notice"><b>Important:</b> StudyHub schedules only chapters you add or verify in your syllabus. It will not invent missing textbook chapters, exam weightage or PYQ content.</div></div>
  <div class="panel smart-priority-panel"><div class="section-head"><div><h2>Personalise your smart routine</h2><p class="muted">Tell StudyHub which subjects need attention. The routine reorders study blocks using your priorities, chapter progress and recorded mock marks.</p></div><span class="pill">Adaptive plan</span></div><div class="form-grid"><label>Next exam subject<select id="priorityExamSubject" class="input"></select></label><label>Next exam date<input id="priorityExamDate" class="input" type="date"></label></div><div id="subjectPriorityGrid" class="priority-grid"></div><div class="row-actions"><button type="button" class="btn" id="saveSubjectPriorities">Update my smart routine</button><span class="muted small" id="prioritySaveStatus" role="status">Your choices are saved with your StudyHub data.</span></div></div>
  <div class="two-col"><div class="panel"><h3>Daily study goal</h3><div class="form-grid"><label>Weekday goal (hours)<input class="input" type="number" id="weekdayGoal" min="0.5" max="16" step=".5"></label><label>Sunday goal (hours)<input class="input" type="number" id="sundayGoal" min="0.5" max="16" step=".5"></label></div><button class="btn" id="saveGoals">Save goals</button></div><div class="panel"><h3>Study reminders</h3><p class="muted">Get a reminder 5 minutes before each study block while StudyHub is open. On supported iPhones, add StudyHub to your Home Screen and allow notifications.</p><button class="btn" id="enableStudyReminders">Enable study reminders</button><p id="reminderStatus" class="muted" aria-live="polite">Reminders are off.</p></div></div>
  <div class="panel"><div class="section-head"><div><h2>My default full-day timetable</h2><p class="muted">A sustainable routine with a weekday rotation and a longer Sunday revision plan.</p></div><span class="pill">Auto-selected for Plus One</span></div><div class="row-actions"><button class="btn" id="showWeekdayPlan">Weekday</button><button class="btn secondary" id="showSundayPlan">Sunday · 6 hours</button><button class="btn secondary" id="applyTodayPlan">Add today's sessions as missions</button></div><div id="defaultTimetable" class="schedule-list"></div><p class="muted small">Difficulty layers: Hard = learn concepts + worked examples; Medium = diagrams/structured answers; Light = language, recall and writing. The label is a planning guide, not a judgement of your ability.</p></div>

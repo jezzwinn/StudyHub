@@ -49,4 +49,11 @@ AI answer evaluation must be advisory and rubric-grounded; never represent it as
 - Added optional Supabase email/password accounts in Settings.
 - Added local-first cloud upload, device restore, reconnect sync, and periodic foreground refresh.
 - Added per-user RLS SQL and setup instructions in `docs/CLOUD-SYNC-SETUP.md` and `docs/SUPABASE-SETUP.sql`.
-- Cloud sync is not active until a Supabase project is configured by the site owner.
+- The owner configures the Supabase project once in the app source; students do not enter project credentials.
+
+
+## v9 · Preconfigured cloud sync
+- Removed the per-device Project URL and publishable-key fields and the Save cloud settings button.
+- Initialises the configured Supabase client automatically when StudyHub loads.
+- Leaves only student email/password account controls in Settings.
+- Clarified cloud data privacy and updated the service-worker cache version.

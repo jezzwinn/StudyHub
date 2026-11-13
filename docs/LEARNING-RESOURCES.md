@@ -44,3 +44,15 @@ Malayalam is now a separate subject in all three programme workspaces. Malayalam
 ### Important syllabus and accuracy note
 
 The 54 note packs are original supplementary learning notes organised under subject and concept/chapter headings. They are **not claimed to be complete chapter-by-chapter coverage of the official 2026–27 Kerala SCERT/DHSE syllabus**. Chapter labels are concept groupings, not assertions about official chapter numbering or textbook order. Students must compare each topic with the exact current textbook, medium, stream and teacher-announced portions. Literature-specific facts, quotations, poem lines, author biographies and official marking schemes have intentionally not been invented.
+
+
+## PYQ and paper gateways added in StudyHub 1.4
+
+- Official SCERT Higher Secondary Evaluation Portal: https://questionpool.scert.kerala.gov.in/ — question-paper view for students and teachers.
+- Official SCERT Kerala updates and model-question search: https://scert.kerala.gov.in/?s=qp — confirm the current class, medium and scheme before use.
+- Plus One independent previous-paper archive: https://schools.aglasem.com/kerala-plus-one-question-papers/
+- SSLC independent previous-paper archive: https://schools.aglasem.com/kerala-sslc-question-papers/
+- Plus Two independent previous-paper archive: https://schools.aglasem.com/kerala-plus-two-question-paper/
+- KITE Mukulam / Samagra learning resource portal: https://mukulam.kite.kerala.gov.in/
+
+The independent archives are convenience indexes, not official authorities. StudyHub opens source sites rather than downloading or republishing their files. Verify paper year, medium, stream, revised syllabus and answer-key status before using a paper for exam preparation.

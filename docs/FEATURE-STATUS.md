@@ -1,44 +1,29 @@
-# StudyHub feature status — baseline audit
+# StudyHub feature status
 
-This document describes the supplied v6 codebase; it is not a claim that every
-planned feature is complete.
+This file distinguishes the current baseline from long-term roadmap ideas.
 
-## Present in the supplied baseline
-- Dashboard and programme selector
-- Subject-centre and starter-note interface
-- Smart planner
-- Focus timer
-- Revision cards
-- Digital notebook interface
-- Diagram drawing interface
-- Practice arena and exam simulator
-- Answer self-review tools
-- Voice study interface
-- Local PDF reader interface
-- Exam/marks, analytics and reports interfaces
-- Resource, community and values interfaces
-- Local backup/restore interface
-- PWA manifest and service worker
+## Included in this build
+- Responsive dashboard and programme workspaces for Kerala DHSE Plus One, SSLC Class 10 and Plus Two.
+- Separate `login.html` account entry with sign-in, free account creation, guest mode, show/hide password and password recovery.
+- Separate Account & Security section and Preferences section.
+- Grouped desktop navigation and mobile More drawer.
+- Subject centres, chapter checklist and supplementary note library.
+- Automatic school-day and holiday planner using student availability, school hours, wake/sleep, protected recreation and study-hour limits.
+- Chapter-level scheduling into learn, active-recall/practice and revision/PYQ phases; ranking uses chapter difficulty/confidence, subject priorities and recorded mock marks.
+- Adaptive smart timetable using student focus ratings, chapter progress, recorded mock marks and next exam date.
+- Focus timer, revision cards, notebook, diagram lab, practice quiz, exam simulator, answer self-review, voice study and local PDF reader.
+- PYQ & Question Papers library for Plus One, SSLC and Plus Two, with official and independent sources labelled separately.
+- Curated SCERT, KITE Mukulam/Samagra, DIKSHA, Khan Academy India, PhET and NCERT resource links.
+- Exam records, analytics, reports, private community contribution drafts, values/reflections, backup and restore.
+- PWA manifest/service worker and local-first storage.
+- Preconfigured Supabase Auth and private per-user JSONB row with RLS, automatic debounced cloud sync and retry.
 
-## Known limitations to address in future releases
-- Starter notes are not a verified, complete official chapter-by-chapter syllabus.
-- Chapter mind maps need verified textbook-aligned content.
-- A page being present in HTML does not prove all its controls work at runtime.
-- Browser notifications and background reminders vary by browser and installation state.
-- Local browser storage is not cloud sync and can be lost if site data is cleared.
-- Static hosting alone does not provide shared accounts, live community chat, or server-side uploads; optional personal sync now uses an external Supabase project.
-- Generative AI, cloud AI evaluation and external API-dependent features are not included.
-- Rule-based study suggestions and prompt templates are not generative AI.
-
-## Release gate
-Before calling a feature complete, test its main user flow, empty state, save/reload
-behaviour, mobile layout, keyboard/accessibility basics, offline behaviour where
-applicable, and backup/restore behaviour.
-
-
-## Optional cloud sync addition (v8)
-- Added Supabase email/password authentication and per-user cloud backup/sync UI in Settings.
-- Added SQL setup with Row Level Security and per-user ownership policies.
-- Local-first operation remains available when cloud is not configured or the device is offline.
-- Cloud sync is not active until the owner creates a Supabase project, runs the SQL setup, and configures the project URL/public key in StudyHub.
-- Whole-state sync is last-upload-wins; there is no automatic multi-device merge. PDFs and diagram canvas images remain local.
+## Important limitations
+- Official chapter lists, portions and marking schemes must be verified against current SCERT/DHSE documents; supplementary notes are not a replacement for prescribed textbooks.
+- Third-party PYQ archives are not official and their links/content may change. Verify year, subject, medium and syllabus.
+- Static hosting does not provide a shared public upload/moderation backend or live community chat; community contributions are local private drafts in this build.
+- Generative AI tutor, AI answer evaluation and paid API-dependent features are excluded. Study Support is rule-based.
+- Browser notifications and speech features vary by device/browser.
+- Cloud sync is whole-state last-upload-wins, not field-level multi-device merge.
+- Device-selected PDFs and diagram canvas images remain local-only.
+- Email confirmation and password-reset delivery depend on Supabase Auth email configuration and provider limits.

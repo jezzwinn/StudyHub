@@ -34,3 +34,10 @@ the inherited release history.
 
 ## Optional cross-device sync
 See [`docs/CLOUD-SYNC-SETUP.md`](docs/CLOUD-SYNC-SETUP.md) for student sign-up and account-sync instructions. The owner must maintain the configured Supabase project and its Row Level Security policies.
+
+
+## Latest update — 1.6.0
+The Smart Planner now accepts school-day/holiday availability, school hours, wake/sleep times, protected recreation, and study-hour limits. It can generate a date-and-time plan from the exact chapters the student has entered, with learning, active-recall/practice and revision/PYQ phases. It preserves completed generated sessions when regenerating and uses recorded chapter difficulty, confidence, subject priority and mock performance in its ranking. This is an automatic local scheduling engine, not a claim that every official syllabus or PYQ database is already complete.
+
+## Previous update — 1.5.0
+The dashboard now guides new students through three clear actions (Learn → Plan → Practise), while the full feature navigation is grouped and collapsed until needed. See `docs/RELEASE-NOTES-1.5.0.md`.
