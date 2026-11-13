@@ -8,23 +8,9 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="css/styles.css">
 <title>StudyHub</title>
+
 </head>
 <body>
-<div id="authScreen" class="auth-screen hidden" aria-label="StudyHub account access">
- <div class="auth-card">
-  <div class="auth-brand"><span class="auth-logo">✦</span><div><b>StudyHub</b><small>Learn · Share · Care · Grow Together</small></div></div>
-  <div class="eyebrow">YOUR LEARNING SPACE</div><h1 id="authHeading">Welcome back.</h1><p class="muted" id="authIntro">Sign in to sync your learning journey across devices, or continue as a guest.</p>
-  <label class="auth-label">Email address<input class="input" id="cloudEmail" type="email" placeholder="you@example.com" autocomplete="email"></label>
-  <label class="auth-label">Password<input class="input" id="cloudPassword" type="password" placeholder="At least 8 characters" autocomplete="current-password"></label>
-  <div class="auth-actions"><button class="btn" id="cloudSignIn">Sign in</button><button class="btn secondary" id="cloudSignUp">Create free account</button></div>
-  <button class="auth-link" id="forgotPassword">Forgot password?</button>
-  <button class="btn hidden" id="updatePassword">Save new password</button>
-  <p id="authStatus" class="auth-status" role="status" aria-live="polite"></p>
-  <div class="auth-divider"><span>OR</span></div>
-  <button class="btn guest-btn" id="continueGuest">Continue as guest on this device</button>
-  <p class="auth-foot">Guest data stays on this device. Sign in whenever you want cross-device sync.</p>
- </div>
-</div>
 <header class="topbar">
   <button class="brand" data-page="dashboard"><span class="brand-mark">✦</span><span>StudyHub</span></button>
   <div class="top-actions"><span id="programmeBadge" class="pill">Plus One</span><button class="icon-btn" id="themeToggle" aria-label="Toggle theme">◐</button><button class="icon-btn" id="programmeToggle" aria-label="Change programme">🎓</button></div>
@@ -36,6 +22,7 @@
   <details class="nav-group" open><summary>LEARNING</summary>
     <button class="nav" data-page="subjects">▦ <span>Subject centres</span></button>
     <button class="nav" data-page="resources">↗ <span>Study library</span></button>
+    <button class="nav" data-page="papers">▤ <span>PYQ & question papers</span></button>
     <button class="nav" data-page="notebook">▧ <span>Digital notebook</span></button>
     <button class="nav" data-page="diagram">✎ <span>Diagram lab</span></button>
     <button class="nav" data-page="pdfs">▤ <span>PDF reader</span></button>
@@ -60,8 +47,9 @@
     <button class="nav" data-page="ai">✺ <span>Study support</span></button>
   </details>
   <details class="nav-group"><summary>ACCOUNT & DATA</summary>
+    <button class="nav" data-page="account">♙ <span>Account & security</span></button>
     <button class="nav" data-page="backup">⛨ <span>Backup vault</span></button>
-    <button class="nav" data-page="settings">⚙ <span>Settings</span></button>
+    <button class="nav" data-page="settings">⚙ <span>Preferences</span></button>
   </details>
   <p class="side-foot">Learn. Share. Care.<br>Grow Together. ♥</p>
 </aside>
@@ -91,6 +79,7 @@
 <section class="page" id="page-planner">
  <div class="page-title"><div><div class="eyebrow">PLAN WITH PURPOSE</div><h1>Smart planner</h1><p class="muted">Make a realistic plan, then adjust it as life happens.</p></div></div>
  <div class="notice"><b>Exam-ready default routine:</b> built around a long school day (7:30 AM–6:00 PM), protected sleep, short breaks, active recall and spaced revision. It rotates every Plus One subject. Adjust school/commute timings to your real routine.</div>
+ <div class="panel smart-priority-panel"><div class="section-head"><div><h2>Personalise your smart routine</h2><p class="muted">Tell StudyHub which subjects need attention. The routine reorders study blocks using your priorities, chapter progress and recorded mock marks.</p></div><span class="pill">Adaptive plan</span></div><div class="form-grid"><label>Next exam subject<select id="priorityExamSubject" class="input"></select></label><label>Next exam date<input id="priorityExamDate" class="input" type="date"></label></div><div id="subjectPriorityGrid" class="priority-grid"></div><div class="row-actions"><button type="button" class="btn" id="saveSubjectPriorities">Update my smart routine</button><span class="muted small" id="prioritySaveStatus" role="status">Your choices are saved with your StudyHub data.</span></div></div>
  <div class="two-col"><div class="panel"><h3>Daily study goal</h3><div class="form-grid"><label>Weekday goal (hours)<input class="input" type="number" id="weekdayGoal" min="0.5" max="16" step=".5"></label><label>Sunday goal (hours)<input class="input" type="number" id="sundayGoal" min="0.5" max="16" step=".5"></label></div><button class="btn" id="saveGoals">Save goals</button></div><div class="panel"><h3>Study reminders</h3><p class="muted">Get a reminder 5 minutes before each study block while StudyHub is open. On supported iPhones, add StudyHub to your Home Screen and allow notifications.</p><button class="btn" id="enableStudyReminders">Enable study reminders</button><p id="reminderStatus" class="muted" aria-live="polite">Reminders are off.</p></div></div>
  <div class="panel"><div class="section-head"><div><h2>My default full-day timetable</h2><p class="muted">A sustainable routine with a weekday rotation and a longer Sunday revision plan.</p></div><span class="pill">Auto-selected for Plus One</span></div><div class="row-actions"><button class="btn" id="showWeekdayPlan">Weekday</button><button class="btn secondary" id="showSundayPlan">Sunday · 6 hours</button><button class="btn secondary" id="applyTodayPlan">Add today's sessions as missions</button></div><div id="defaultTimetable" class="schedule-list"></div><p class="muted small">Difficulty layers: Hard = learn concepts + worked examples; Medium = diagrams/structured answers; Light = language, recall and writing. The label is a planning guide, not a judgement of your ability.</p></div>
  <div class="panel"><div class="section-head"><div><h2>Chapter mind maps</h2><p class="muted">Mind maps are generated from the actual chapter notes available in your selected programme. Add the exact textbook chapter first if it is missing.</p></div></div><label>Choose a subject<select id="mindMapSubject" class="input"></select></label><div id="mindMapLibrary"></div></div>
@@ -108,6 +97,20 @@
  <div class="page-title"><div><div class="eyebrow">REMEMBER MORE</div><h1>Revision centre</h1><p class="muted">Create flashcards and use spaced repetition: 1, 3, 7 and 14 days.</p></div></div>
  <form id="cardForm" class="panel form-grid"><h3 class="wide">＋ Create a flashcard</h3><label>Subject<select id="cardSubject" class="input"></select></label><label>Topic<input id="cardTopic" class="input" required maxlength="120" placeholder="Chapter / topic"></label><label class="wide">Question / front<textarea id="cardFront" class="input" rows="2" required></textarea></label><label class="wide">Answer / back<textarea id="cardBack" class="input" rows="3" required></textarea></label><div class="wide"><button class="btn">Save flashcard</button></div></form>
  <div class="section-head"><h2>Review now</h2><span id="dueCount" class="muted"></span></div><div class="panel" id="reviewArea"></div><div class="section-head"><h2>All cards</h2></div><div class="panel" id="cardList"></div>
+</section>
+
+<section class="page" id="page-papers">
+ <div class="page-title"><div><div class="eyebrow">PRACTISE WITH PURPOSE</div><h1>PYQ & question papers</h1><p class="muted">A curated gateway to previous papers, official model questions and exam practice for Kerala students.</p></div></div>
+ <div class="notice"><b>Source labels matter:</b> Official government / SCERT resources are marked official. Third-party paper collections are clearly labelled as independent archives. Always confirm year, medium, subject and current syllabus before practising.</div>
+ <div class="paper-toolbar"><label class="field-label">Find a paper or resource<input id="paperSearch" class="input" type="search" placeholder="Search subject, year or source…"></label><label class="field-label">Programme<select id="paperProgramme" class="input"><option value="plusone">Plus One</option><option value="sslc">SSLC · Class 10</option><option value="plustwo">Plus Two</option></select></label></div>
+ <div class="section-head"><h2>Question paper collections</h2><span class="pill" id="paperResultCount">Resources</span></div><div id="paperResourceGrid" class="resource-grid"></div>
+ <div class="section-head"><h2>Study materials & digital learning</h2></div><div class="resource-grid">
+  <article class="resource-tile"><span class="resource-icon">🏫</span><div class="eyebrow">OFFICIAL · KERALA KITE</div><h3>Mukulam / Samagra resources</h3><p>Videos, diagrams, interactive activities, concept maps, topic reviews and learning materials aligned to Kerala SCERT Plus One and Plus Two.</p><a class="btn secondary" href="https://mukulam.kite.kerala.gov.in/" target="_blank" rel="noopener noreferrer">Explore resources ↗</a></article>
+  <article class="resource-tile"><span class="resource-icon">📚</span><div class="eyebrow">OFFICIAL · SCERT KERALA</div><h3>Revised textbooks & scheme of work</h3><p>Check the current textbook edition, official portions and 2026–27 scheme of work before relying on older notes or papers.</p><a class="btn secondary" href="https://scert.kerala.gov.in/?id=135&option=com_content&view=article" target="_blank" rel="noopener noreferrer">Open SCERT updates ↗</a></article>
+  <article class="resource-tile"><span class="resource-icon">🌐</span><div class="eyebrow">GOVERNMENT LEARNING PORTAL</div><h3>DIKSHA</h3><p>Search digital textbooks, videos and practice resources. Confirm alignment with the Kerala textbook and current school portions.</p><a class="btn secondary" href="https://diksha.gov.in/" target="_blank" rel="noopener noreferrer">Browse DIKSHA ↗</a></article>
+  <article class="resource-tile"><span class="resource-icon">🧪</span><div class="eyebrow">INTERACTIVE PRACTICE</div><h3>PhET simulations</h3><p>Explore physics, chemistry, biology and mathematics concepts with free interactive simulations.</p><a class="btn secondary" href="https://phet.colorado.edu/" target="_blank" rel="noopener noreferrer">Open PhET ↗</a></article>
+ </div>
+ <p class="muted small">StudyHub links to source websites rather than copying copyrighted books or question papers. A source may change its files or availability; report broken links through the feedback channel when available.</p>
 </section>
 
 <section class="page" id="page-notebook">
@@ -155,7 +158,7 @@
 
 <section class="page" id="page-resources">
  <div class="page-title"><div><div class="eyebrow">YOUR LEARNING LINKS</div><h1>Resource library</h1><p class="muted">Save links to official textbooks, lessons and useful references.</p></div></div>
- <form id="resourceForm" class="panel form-grid"><label>Resource name<input id="resourceTitle" class="input" required maxlength="140"></label><label>Subject<select id="resourceSubject" class="input"></select></label><label class="wide">HTTPS link<input id="resourceUrl" class="input" type="url" required placeholder="https://..."></label><label>Type<select id="resourceType" class="input"><option>Official textbook</option><option>Video lesson</option><option>Reference</option><option>Question paper</option><option>Other</option></select></label><div class="wide"><button class="btn">Save resource</button></div></form><div class="panel" id="resourceList"></div>
+ <form id="resourceForm" class="panel form-grid"><label>Resource name<input id="resourceTitle" class="input" required maxlength="140"></label><label>Subject<select id="resourceSubject" class="input"></select></label><label class="wide">HTTPS link<input id="resourceUrl" class="input" type="url" required placeholder="https://..."></label><label>Type<select id="resourceType" class="input"><option>Official textbook</option><option>Video lesson</option><option>Reference</option><option>Question paper</option><option>Other</option></select></label><div class="wide"><button class="btn">Save resource</button></div></form><div class="section-head"><h2>Curated learning sources</h2><p class="muted">Official portals first; check programme and edition.</p></div><div id="curatedResourceList" class="resource-grid"></div><div class="section-head"><h2>My saved resources</h2></div><div class="panel" id="resourceList"></div>
 </section>
 
 <section class="page" id="page-community">
@@ -195,13 +198,9 @@
  <div class="page-title"><div><div class="eyebrow">REFLECT, DON'T COMPARE</div><h1>Progress reports</h1><p class="muted">Create a printable snapshot for yourself, or share it with a parent or teacher if you choose.</p></div></div>
  <div class="notice">Reports include only study totals and academic progress. Private gratitude entries, kindness reflections and contribution drafts are excluded.</div><div class="panel" id="reportPreview"></div><button class="btn" id="printReport">Print / Save as PDF</button>
 </section>
-<section class="page" id="page-backup">
- <div class="page-title"><div><div class="eyebrow">YOUR DATA, YOUR CONTROL</div><h1>Backup vault</h1><p class="muted">Export often. Keep a copy somewhere separate from this device.</p></div></div>
- <div class="panel"><h3>Export your StudyHub backup</h3><p class="muted">Includes your local settings, missions, sessions, flashcards, notes, questions, exam records and private drafts.</p><button class="btn" id="exportBackup">Download JSON backup</button><hr><h3>Restore a backup</h3><p class="muted">Restoring replaces your current local StudyHub data. Export first if needed.</p><input type="file" id="importFile" class="input" accept=".json,application/json"><button class="btn secondary" id="importBackup">Restore selected file</button></div>
-</section>
-
-<section class="page" id="page-settings">
- <div class="page-title"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Settings</h1><p class="muted">Choose your programme and adjust your study space.</p></div></div>
+<section class="page" id="page-account">
+ <div class="page-title"><div><div class="eyebrow">YOUR IDENTITY · YOUR DATA</div><h1>Account & security</h1><p class="muted">Manage sign-in, password, cloud connection and account privacy separately from study preferences.</p></div></div>
+ <div class="panel account-hero"><div class="account-avatar">✦</div><div><h2 id="accountPageTitle">Your StudyHub account</h2><p class="muted" id="accountPageEmail">Guest mode · This device</p></div><button class="btn" id="accountPageSignIn" type="button">Sign in / Create account</button></div>
  <div class="panel" id="cloudSyncPanel">
   <div class="section-head" style="margin-top:0"><div><h2>Cloud sync across devices</h2><p class="muted">Use the same StudyHub account on your phone, tablet and computer.</p></div><span class="pill" id="cloudSyncBadge">Not connected</span></div>
   <div class="notice">StudyHub cloud sync is already configured. No project URL or API key needs to be entered. Your browser keeps a local copy for offline use, while your signed-in account securely backs up your study data across devices.</div>
@@ -209,6 +208,17 @@
   <p class="muted" id="cloudSyncStatus" role="status" aria-live="polite">Not connected. Local-only mode is active.</p>
   <p class="muted small">Sync covers your StudyHub state: planner, notes, chapters, flashcards, questions, results, sessions, settings and private reflections. Locally selected PDF files and diagram canvas images are not uploaded. Use the same account on every device. If you sign in on a device that already has local data, you will be asked whether to download cloud data or upload that device's data.</p>
  </div>
+
+ <div class="two-col"><article class="panel"><h3>Password & sign-in</h3><p class="muted">Use the dedicated account screen to sign in, create an account or request a password reset. Password recovery opens a secure reset flow.</p><button class="btn secondary" type="button" id="accountChangePassword">Change / reset password</button></article><article class="panel"><h3>Privacy & data</h3><p class="muted">Your learning data is saved locally first. When signed in, it syncs to your private account. PDFs and diagram canvas images stay on this device.</p><button class="btn secondary" data-page="backup">Open backup vault →</button></article></div>
+</section>
+
+<section class="page" id="page-backup">
+ <div class="page-title"><div><div class="eyebrow">YOUR DATA, YOUR CONTROL</div><h1>Backup vault</h1><p class="muted">Export often. Keep a copy somewhere separate from this device.</p></div></div>
+ <div class="panel"><h3>Export your StudyHub backup</h3><p class="muted">Includes your local settings, missions, sessions, flashcards, notes, questions, exam records and private drafts.</p><button class="btn" id="exportBackup">Download JSON backup</button><hr><h3>Restore a backup</h3><p class="muted">Restoring replaces your current local StudyHub data. Export first if needed.</p><input type="file" id="importFile" class="input" accept=".json,application/json"><button class="btn secondary" id="importBackup">Restore selected file</button></div>
+</section>
+
+<section class="page" id="page-settings">
+ <div class="page-title"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Preferences</h1><p class="muted">Adjust your programme, appearance and study experience.</p></div></div>
  <div class="panel settings"><div class="setting-row"><div><b>Academic programme</b><p class="muted">Switch between SSLC, Plus One and Plus Two.</p></div><button class="btn secondary" id="settingsProgramme">Change</button></div><div class="setting-row"><div><b>Appearance</b><p class="muted">Light or dark theme.</p></div><button class="btn secondary" id="settingsTheme">Toggle</button></div><div class="setting-row"><div><b>Daily goal</b><p class="muted">Edit weekday and Sunday targets in the planner.</p></div><button class="btn secondary" data-page="planner">Planner</button></div><div class="setting-row"><div><b>Delete local data</b><p class="muted">Permanently erase all StudyHub records in this browser.</p></div><button class="btn danger" id="deleteData">Delete all data</button></div></div>
  <div class="notice"><b>Privacy & backup:</b> Your browser keeps a local copy. When you create an account and enable sync by signing in, StudyHub uploads your planner, notes and learning records to your private Supabase account so they can sync across devices. Locally selected PDFs and diagram canvas images remain on that device. Export a JSON backup regularly. Clearing browser data can erase the local copy, so keep your backup safe.</div>
 </section>

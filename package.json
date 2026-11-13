@@ -1,9 +1,9 @@
 {
-  "name": "studyhub-2027",
-  "version": "1.0.0-baseline",
+  "name": "studyhub",
+  "version": "1.4.0-separate-login-adaptive-planner",
   "private": true,
-  "description": "StudyHub 2027 static learning PWA baseline",
+  "description": "StudyHub learning PWA with separate account, adaptive planner and curated question-paper library",
   "scripts": {
-    "check": "node --check js/app.js && node tests/smoke-check.js"
+    "check": "node --check js/app.js && node --check js/auth.js && node tests/smoke-check.js"
   }
 }
